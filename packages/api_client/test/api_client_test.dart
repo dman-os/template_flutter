@@ -26,11 +26,11 @@ void main() {
     });
 
     test('supports email', () async {
-      await client.authenticateEmail(email, password);
+      await client.authenticate(email, password);
     });
 
     test('supports username', () async {
-      await client.authenticateUsername(email, username);
+      await client.authenticate(email, username);
     });
   });
   group('get /users/{id}', () {

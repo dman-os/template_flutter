@@ -17,20 +17,11 @@ class AuthRepository {
     this.client,
   );
 
-  Future<AuthenticateResponse> signInUsername(
-    String username,
+  Future<AuthenticateResponse> authenticate(
+    String identifier,
     String password,
   ) async {
-    final response = await client.authenticateUsername(username, password);
-    await refreshFromValues(response);
-    return response;
-  }
-
-  Future<AuthenticateResponse> signInEmail(
-    String email,
-    String password,
-  ) async {
-    final response = await client.authenticateEmail(email, password);
+    final response = await client.authenticate(identifier, password);
     await refreshFromValues(response);
     return response;
   }

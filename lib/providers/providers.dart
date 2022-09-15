@@ -10,7 +10,7 @@ final sqliteDatabseProvider = Provider<sqflite.Database>(
       "Programming error: Value must be set via a ProviderScope override"),
 );
 
-final apiClientProvider = Provider((ref) => ApiClient("http://localhost:8080"));
+final apiClientProvider = Provider((ref) => ApiClient("http://localhost:4010"));
 
 final userCache =
     Provider((ref) => SqliteUserCache(ref.watch(sqliteDatabseProvider)));

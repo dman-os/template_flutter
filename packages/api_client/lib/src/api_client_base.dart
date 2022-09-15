@@ -38,29 +38,16 @@ class ApiClient {
     return User.fromJson(response.data);
   }
 
-  Future<AuthenticateResponse> _authenticate(
-    String identifierType,
+  Future<AuthenticateResponse> authenticate(
     String identifier,
     String password,
   ) async {
     final response = await makeApiCall("post", "/authenticate", jsonBody: {
-      identifierType: identifier,
+      "identifier": identifier,
       "password": password,
     });
     return AuthenticateResponse.fromJson(response.data);
   }
-
-  Future<AuthenticateResponse> authenticateUsername(
-    String username,
-    String password,
-  ) =>
-      _authenticate("username", username, password);
-
-  Future<AuthenticateResponse> authenticateEmail(
-    String email,
-    String password,
-  ) =>
-      _authenticate("email", email, password);
 
   /// The assumption is that `jsonBody` is json serializable
   Future<Response<dynamic>> makeApiCall(

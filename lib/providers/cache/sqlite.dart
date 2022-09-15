@@ -16,7 +16,7 @@ Future<sqflite.Database> initDb() async {
     if (!(await dir.exists())) await dir.create(recursive: true);
   }
 
-  // await sqflite.deleteDatabase(path);
+  await sqflite.deleteDatabase(path);
 
   final db = await sqflite.openDatabase(
     path,
