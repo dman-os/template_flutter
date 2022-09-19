@@ -16,14 +16,10 @@ class ApiUserRepository {
   ApiUserRepository(this.cache, this.client);
 
   @override
-  Future<User> create(
-    CreateUserRequest input,
-    String username,
-    String? authToken,
-  ) async {
+  Future<User> create(CreateUserRequest input) async {
     final item = await client.createUser(input);
-    await cache.setItem(item.id, item);
-    _changedItemsController.add({item.id});
+    // await cache.setItem(item.id, item);
+    // _changedItemsController.add({item.id});
     return item;
   }
 

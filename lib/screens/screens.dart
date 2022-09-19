@@ -1,10 +1,13 @@
 export 'sign_in.dart';
+export 'sign_up.dart';
 export 'home.dart';
 export 'splash.dart';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'sign_in.dart';
+import 'sign_up.dart';
 import 'home.dart';
 import 'splash.dart';
 
@@ -20,10 +23,15 @@ class AsyncFnCubit<T> extends StateNotifier<AsyncValue<T>?> {
 Route onGenerateRoute(RouteSettings settings) {
   switch (settings.name) {
     case HomeScreen.routeName:
-      return HomeScreen.route();
+      return HomeScreen.route(settings);
     case SignInPage.routeName:
-      return SignInPage.route();
+      return SignInPage.route(settings);
+    case SignUpPage.routeName:
+      return SignUpPage.route(settings);
     default:
-      return SplashScreen.route();
+      if (kDebugMode) {
+        print("route ${settings.name} didn't match any known routes");
+      }
+      return SplashScreen.route(settings);
   }
 }

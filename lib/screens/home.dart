@@ -6,8 +6,8 @@ import 'package:template_flutter/providers/providers.dart';
 class HomeScreen extends ConsumerWidget {
   static const String routeName = "/home";
 
-  static Route route() => MaterialPageRoute(
-        settings: const RouteSettings(name: routeName),
+  static Route route(RouteSettings settings) => MaterialPageRoute(
+        settings: settings,
         builder: (context) => const HomeScreen(),
       );
 

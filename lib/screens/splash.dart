@@ -14,8 +14,8 @@ final _isLoggedInProvider = FutureProvider.autoDispose((ref) async {
 class SplashScreen extends ConsumerWidget {
   static const String routeName = "/";
 
-  static Route route() => MaterialPageRoute(
-        settings: const RouteSettings(name: routeName),
+  static Route route(RouteSettings settings) => MaterialPageRoute(
+        settings: settings,
         builder: (context) => const SplashScreen(),
       );
 
@@ -30,7 +30,10 @@ class SplashScreen extends ConsumerWidget {
           if (isLoggedIn) {
             Navigator.pushReplacementNamed(context, HomeScreen.routeName);
           } else {
-            Navigator.pushReplacementNamed(context, SignInPage.routeName);
+            Navigator.pushReplacementNamed(
+              context,
+              SignInPage.routeName,
+            );
           }
         },
         error: (err, _) => throw err,
